@@ -8,7 +8,7 @@
 #include <iostream>
 
 template<typename T>
-void iter(T* tabPtr, std::size_t tabSize, void (*funPtr)(const T&))
+void iter(T* tabPtr, std::size_t tabSize, void (*funPtr)(T &))
 {
 	for (size_t i = 0; i < tabSize; i++)
 	{
@@ -18,9 +18,18 @@ void iter(T* tabPtr, std::size_t tabSize, void (*funPtr)(const T&))
 }
 
 template<typename U>
-void printValue(const U& value)
+void printValue(U & value)
 {
 	std::cout << "Value = " << value << std::endl;
+	return;
+}
+
+template<typename R> // chequear porque no funciona como deberaia
+void addPlusOne(R & value)
+{
+	std::cout << "Changing " << value << " to " << value << " + 1";
+	value += 1;
+	std::cout << " ===> New value: " << value << std::endl;
 	return;
 }
 
