@@ -24,12 +24,10 @@ void printValue(U & value)
 	return;
 }
 
-template<typename R> // chequear porque no funciona como deberaia
+template<typename R>
 void addPlusOne(R & value)
 {
-	std::cout << "Changing " << value << " to " << value << " + 1";
-	value += 1;
-	std::cout << " ===> New value: " << value << std::endl;
+	value = value + value;
 	return;
 }
 
