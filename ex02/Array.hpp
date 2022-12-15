@@ -13,11 +13,7 @@ class Array
 		Array<T>( unsigned int n ): _size(n)
 		{
 			if (n > 0)
-			{
 				_tab = new T[_size];
-				for (unsigned int i = 0; i < _size; i++)
-					_tab[i] = 0;
-			}
 		};
 		Array<T>( Array<T> const & src )
 		{
@@ -44,7 +40,14 @@ class Array
 		};
 		T&	operator[]( unsigned int i )
 		{
-			if (i > _size -1)
+			if (i > _size -1 || _tab == NULL)
+					throw (NonExistentArrayNumberException());
+			return _tab[i];
+		};
+
+		T&	operator[]( unsigned int const i ) const
+		{
+			if (i > _size -1 || _tab == NULL)
 					throw (NonExistentArrayNumberException());
 			return _tab[i];
 		};
@@ -59,7 +62,7 @@ class Array
 			public:
 				virtual const char* what() const throw()
 				{
-					return "Error: Non-existent array number";
+					return "Error: Non-existent array number\n";
 				}
 		};
 

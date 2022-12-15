@@ -5,10 +5,10 @@
 # include <string>
 # include <iosfwd>
 # include <cstddef>
-#include <iostream>
+# include <iostream>
 
 template<typename T>
-void iter(T* tabPtr, std::size_t tabSize, void (*funPtr)(T &))
+void iter(T* tabPtr, std::size_t tabSize, void (*funPtr)(T const &))
 {
 	for (size_t i = 0; i < tabSize; i++)
 	{
@@ -18,7 +18,7 @@ void iter(T* tabPtr, std::size_t tabSize, void (*funPtr)(T &))
 }
 
 template<typename U>
-void printValue(U & value)
+void printValue(U const & value)
 {
 	std::cout << "Value = " << value << std::endl;
 	return;
